@@ -54,6 +54,7 @@ RUN rm airflow-lib.tar.gz
 
 RUN ls -al
 
+RUN pip install --upgrade setuptools
 RUN pip install --no-index --find-links=/airflow-lib apache-airflow[slim]==2.10.4
 RUN pip install --no-index --find-links=/airflow-lib psycopg2-binary
 
