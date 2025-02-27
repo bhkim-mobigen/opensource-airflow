@@ -53,24 +53,24 @@ RUN tar xvzf airflow-lib.tar.gz
 RUN rm airflow-lib.tar.gz
 
 RUN ls -al
-
-RUN pip install --upgrade setuptools
-RUN pip install --no-index --find-links=/airflow-lib apache-airflow[slim]==2.10.4
-RUN pip install --no-index --find-links=/airflow-lib psycopg2-binary
-
-
-#RUN pip install apache-airflow[slim]==2.10.4
-# psycopg2-binary 설치 (PostgreSQL 연동을 위한 필수 라이브러리)
-#RUN pip install psycopg2-binary
-
-# 작업 디렉토리 설정 (Airflow DAG 파일을 이곳에 배치)
-WORKDIR /airflow
-
-# 기본적인 환경 변수 설정 (Airflow 관련 설정)
-ENV AIRFLOW_HOME=/airflow
-
-# Airflow 웹서버 및 스케줄러 실행
-CMD ["airflow", "webserver"]
+#
+# RUN pip install --upgrade setuptools
+# RUN pip install --no-index --find-links=/airflow-lib apache-airflow[slim]==2.10.4
+# RUN pip install --no-index --find-links=/airflow-lib psycopg2-binary
+#
+#
+# #RUN pip install apache-airflow[slim]==2.10.4
+# # psycopg2-binary 설치 (PostgreSQL 연동을 위한 필수 라이브러리)
+# #RUN pip install psycopg2-binary
+#
+# # 작업 디렉토리 설정 (Airflow DAG 파일을 이곳에 배치)
+# WORKDIR /airflow
+#
+# # 기본적인 환경 변수 설정 (Airflow 관련 설정)
+# ENV AIRFLOW_HOME=/airflow
+#
+# # Airflow 웹서버 및 스케줄러 실행
+# CMD ["airflow", "webserver"]
 
 
 # # #트리노 복사 및 설치
