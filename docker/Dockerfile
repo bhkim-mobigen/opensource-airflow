@@ -13,16 +13,35 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && dnf install -y tzdat
 ENV TZ=Asia/Seoul
 
 
-# 필수 패키지 설치
+# # 필수 패키지 설치
+RUN dnf -y groupinstall "Development Tools" && \
+    dnf -y install python3.8 python3-pip && \
+    python3.8 -m pip install --upgrade pip && \
+    dnf clean all
+
+# RUN dnf -y update && \
+#     dnf -y install \
+#     python3 \
+#     python3-pip \
+#     gcc \
+#     gcc-c++ \
+#     make \
+#     libpq-devel \
+#     && dnf clean all
+
+
+#기본 python 버전 변경
+RUN rm /usr/bin/python3
+RUN ln -s /usr/bin/python3.8 /usr/bin/python3
+
+#기본 라이브러리들 설치
 RUN dnf -y update && \
     dnf -y install \
-    python3 \
-    python3-pip \
-    gcc \
-    gcc-c++ \
-    make \
-    libpq-devel \
-    && dnf clean all
+    cyrus-sasl-devel \
+    gcc-c++ && \
+    dnf clean all
+
+
 
 # Python3 및 pip 업그레이드
 RUN python3 -m pip install --upgrade pip
