@@ -50,9 +50,9 @@ RUN python3 -m pip install --upgrade pip
 #airflow 설치 파일 이동 및 설치
 COPY ../airflow-lib.tar.gz /airflow-lib.tar.gz
 RUN tar xvzf airflow-lib.tar.gz
+RUN ls -al
 RUN rm airflow-lib.tar.gz
 
-RUN ls -al
 
 RUN python3.8 -m pip install --upgrade pip wheel
 RUN pip install --no-index --find-links=/airflow-lib apache-airflow[slim]==2.10.4
