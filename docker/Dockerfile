@@ -72,7 +72,7 @@ ENV AIRFLOW_HOME=/airflow
 COPY ../entrypoint-webserver.sh /entrypoint-webserver.sh
 COPY ../entrypoint-scheduler.sh /entrypoint-scheduler.sh
 RUN chmod 755 /entrypoint-webserver.sh
-RUN chmod 755 /entrypoint-webscheduler.sh
+RUN chmod 755 /entrypoint-scheduler.sh
 
 # Airflow 웹서버 및 스케줄러 실행
 CMD ["sh", "-c", "set -e; /entrypoint-webserver.sh"]
