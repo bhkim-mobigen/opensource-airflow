@@ -1,0 +1,29 @@
+version: '0.1'
+
+services:
+  airflow-webserver:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    image: data-catalog-airflow:0.1
+    container_name: airflow-webserver
+    ports:
+      - "28080:8080"
+    volumes:
+      #- $DATA_CATALOG_SOLUTION_DATA/elasticsearch/data:/elasticsearch-8.9.0/data
+      - /etc/hosts:/etc/hosts
+    #command: ["sh", "-c", "set -e;/elasticsearch-8.9.0/entrypoint.sh"]
+    command: ["tail","-f","/dev/null"]
+
+
+  airflow-scheduler:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    image: data-catalog-airflow:0.1
+    container_name: airflow-scheduler
+    volumes:
+      #- $DATA_CATALOG_SOLUTION_DATA/elasticsearch/data:/elasticsearch-8.9.0/data
+      - /etc/hosts:/etc/hosts
+    #command: ["sh", "-c", "set -e;/elasticsearch-8.9.0/entrypoint.sh"]
+    command: ["tail","-f","/dev/null"]
