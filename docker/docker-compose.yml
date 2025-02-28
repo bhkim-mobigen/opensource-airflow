@@ -5,7 +5,7 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    image: data-catalog-airflow:0.1
+    image: data-catalog-airflow:$IMG_VERSION
     container_name: airflow-webserver
     ports:
       - "28080:8080"
@@ -20,7 +20,7 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    image: data-catalog-airflow:0.1
+    image: data-catalog-airflow:$IMG_VERSION
     container_name: airflow-scheduler
     environment:
       - AIRFLOW_HOME=/airflow
