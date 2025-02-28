@@ -14,6 +14,7 @@ services:
     volumes:
       - $DATA_CATALOG_SOLUTION_DATA/airflow:/airflow
       - /etc/hosts:/etc/hosts
+    working_dir: /airflow
     command: ["sh", "-c", "set -e;/entrypoint-webserver.sh"]
 
   airflow-scheduler:
@@ -27,4 +28,5 @@ services:
     volumes:
       - $DATA_CATALOG_SOLUTION_DATA/airflow:/airflow
       - /etc/hosts:/etc/hosts
+    working_dir: /airflow
     command: ["sh", "-c", "set -e;/entrypoint-scheduler.sh"]
