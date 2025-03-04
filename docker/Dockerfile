@@ -56,6 +56,9 @@ RUN python3.8 -m pip install --upgrade pip wheel
 RUN pip install --no-index --find-links=/airflow-lib apache-airflow[slim]==2.10.4
 RUN pip install --no-index --find-links=/airflow-lib psycopg2-binary
 
+# ssh provider 설치
+RUN pip install apache-airflow-providers-ssh
+
 RUN rm -rf /airflow-lib
 
 
