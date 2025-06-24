@@ -61,6 +61,8 @@ RUN pip install apache-airflow-providers-ssh
 
 RUN rm -rf /airflow-lib
 
+# bashrc 설정 추가
+RUN echo 'alias ll="ls -alF --color=auto"' >> /root/.bashrc
 
 # 작업 디렉토리 설정 (Airflow DAG 파일을 이곳에 배치)
 RUN mkdir /airflow
