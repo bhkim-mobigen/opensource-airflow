@@ -1,17 +1,17 @@
 #!/bin/bash
 
 TIMEOUT=60
-WAIT_INTERVAL=1
+WAIT_INTERVAL=3
 ELAPSED_TIME=0
 
-echo "waiting airflow init db"
+echo "waiting airflow db check-migrations"
 
-while [ ! -f "/airflow/initflag" ]; do
+until airflow db check-migrations; do
   sleep $WAIT_INTERVAL
   ELAPSED_TIME=$((ELAPSED_TIME + WAIT_INTERVAL))
 
   if [ $ELAPSED_TIME -ge $TIMEOUT ]; then
-    echo "waiting Airflow init db : timeout"
+    echo "waiting airflow db check-migrations : timeout"
     exit 1
   fi
 done
