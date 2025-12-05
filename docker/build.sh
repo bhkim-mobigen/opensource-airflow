@@ -4,4 +4,4 @@ cd $DIR/..
 export DATA_CATALOG_SOLUTION_DATA=/DATA_CATALOG/data
 export IMG_VERSION=0.1
 
-docker-compose -f docker/docker-compose.yml build --force-rm airflow-webserver
+docker-compose -f docker/docker-compose.yml build --force-rm data-catalog-airflow-webserver
